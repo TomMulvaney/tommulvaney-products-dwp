@@ -14,7 +14,7 @@ import com.thoughtworks.xstream.XStream;
 @ManagedBean
 public class ProductIO 
 {
-	private String xmlFileName = "productlist";
+	private String xmlFileName = "tommulvaney-products-dwp-productlist";
 	
 	XStream createProductXStream() {
 		XStream xstream = new XStream();
