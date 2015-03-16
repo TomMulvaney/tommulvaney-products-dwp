@@ -9,6 +9,17 @@ import javax.faces.bean.*;
 @ManagedBean
 public class Product
 {	
+	@ManagedProperty(value="#{productData}")
+	private ProductData productData;
+	
+	public ProductData getProductData() {
+		return(productData);
+	}
+	
+	public void setProductData(ProductData productData) {
+		this.productData = productData;
+	}
+	
 	private int id;
 	private String name;
 	private String description;
@@ -47,36 +58,7 @@ public class Product
 	}
 	
 	public String addProduct() {
-		   PreparedStatement ps = null;
-		   Connection con = ProductData.getConnection();
-		   String sql = "INSERT INTO products(id, name, description, quantity) VALUES(?,?,?,?)";
-		   try {
-			   ps = con.prepareStatement(sql);
-			   ps.setInt(1, this.id);
-			   ps.setString(2, this.name);
-			   ps.setString(3, this.description);
-			   ps.setInt(4, this.quantity);
-			   
-			   int i = ps.executeUpdate();
-			   
-			   System.out.println("i: " + i);
-			   
-			   System.out.println("Data Added Successfully");
-		   }
-		   catch(Exception ex) {
-			   System.out.println("addProduct Exception");
-			   System.out.println(ex.getMessage());
-		   }
-		   finally {
-			   try {
-				   con.close();
-				   ps.close();
-			   }
-			   catch (Exception ex) {
-				   ex.printStackTrace();
-			   }
-		   }
-		   
-		   return "";
+		productData.addProduct(this);
+		return "";
 	}
 }

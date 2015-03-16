@@ -43,8 +43,48 @@ public class ProductData implements Serializable {
       }
       return records;
    }
+   
+   public void addProduct(Product newProduct) {		
+	   PreparedStatement ps = null;
+	   Connection con = getConnection();
+	   String sql = "INSERT INTO products(id, name, description, quantity) VALUES(?,?,?,?)";
+	   try {
+		   ps = con.prepareStatement(sql);
+		   
+		   int newProductId = 0;
+		   List<Product> existingProducts = getProducts();
+		   for(Product product : existingProducts) {
+			   if(product.getId() > newProductId) {
+				   newProductId = product.getId();
+			   }
+		   }
+		   newProductId += 1;
+		   
+		   ps.setInt(1, newProductId);
+		   ps.setString(2, newProduct.getName());
+		   ps.setString(3, newProduct.getDescription());
+		   ps.setInt(4, newProduct.getQuantity());
+		   
+		   int i = ps.executeUpdate();
+		   
+		   System.out.println("Data Added Successfully");
+	   }
+	   catch(Exception ex) {
+		   System.out.println("addProduct Exception");
+		   System.out.println(ex.getMessage());
+	   }
+	   finally {
+		   try {
+			   con.close();
+			   ps.close();
+		   }
+		   catch (Exception ex) {
+			   ex.printStackTrace();
+		   }
+	   }
+   }
 
-   public static Connection getConnection(){
+   private Connection getConnection(){
       Connection con = null;
 
       String url = "jdbc:derby:/Users/Bonobo/MyDB";
