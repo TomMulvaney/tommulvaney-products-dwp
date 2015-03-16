@@ -16,18 +16,6 @@ import javax.faces.event.ComponentSystemEvent;
 @ManagedBean(name = "productData", eager = true)
 @SessionScoped
 public class ProductData implements Serializable {
-	
-   private static ProductData instance;
-   
-   public static ProductData getInstance() {
-	   return instance;
-   }
-   
-   public ProductData() {
-	   System.out.println("Constructor");
-	   instance = this;
-   }
-
    private static final long serialVersionUID = 1L;
 
    public List<Product> getProducts(){

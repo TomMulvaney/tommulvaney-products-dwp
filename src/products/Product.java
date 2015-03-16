@@ -14,11 +14,6 @@ public class Product
 	private String description;
 	private int quantity = 1;
 	
-	public Product() {
-		ProductIO productIO = new ProductIO();
-		this.id = productIO.getNewProductId();
-	}
-	
 	public int getId() {
 		return(id);
 	}
