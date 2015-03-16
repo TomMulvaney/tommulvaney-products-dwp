@@ -11,6 +11,47 @@
    <h:body>
 	   <h1>Products</h1>
 	   
+	   <h:form styleClass="userInput">
+		<h2>Product Creation</h2>
+		<ul class="userInputList">
+			<li>
+				<h3>Id</h3>
+			  	<h:inputText value="#{product.id}" 
+			  				required="true" 
+			  				requiredMessage="You must enter an id"
+			  				converterMessage="Id must be a number"
+			  				id="productId"/>
+			  	<h:message for="productId" 
+			  			  errorClass="error"/>
+	  		</li>
+			<li>
+				<h3>Name</h3>
+			  	<h:inputText value="#{product.name}" 
+			  				required="true" 
+			  				requiredMessage="You must enter a name"
+			  				id="productName"/>
+			  	<h:message for="productName" 
+			  			  errorClass="error"/>
+	  		</li>
+	  		<li>
+			  	<h3>Description</h3>
+			  	<h:inputText value="#{product.description}"/>
+	  		</li>
+	  		<li>
+			  	<h3>Quantity</h3>
+			  	<h:inputText value="#{product.quantity}"
+			  				converterMessage="Quantity must be a number"
+			  				id="productQuantity"/>
+			  	<h:message for="productQuantity"
+			  			  errorClass="error"/>
+	  		</li>   
+	  		<li>
+			  	<h:commandButton value="Create"
+			  					action="#{product.addProduct}"/>	
+	  		</li>		
+	  	</ul>
+	</h:form>
+	   
 	   <h:form>
 		   <h2>Product List</h2>
 		   <h:dataTable value="#{productData.products}" var="c"

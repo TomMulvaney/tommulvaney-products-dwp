@@ -16,6 +16,17 @@ import javax.faces.event.ComponentSystemEvent;
 @ManagedBean(name = "productData", eager = true)
 @SessionScoped
 public class ProductData implements Serializable {
+	
+   private static ProductData instance;
+   
+   public static ProductData getInstance() {
+	   return instance;
+   }
+   
+   public ProductData() {
+	   System.out.println("Constructor");
+	   instance = this;
+   }
 
    private static final long serialVersionUID = 1L;
 
@@ -27,14 +38,9 @@ public class ProductData implements Serializable {
       
       List<Product> records = new ArrayList<Product>();
       try {   
-    	  System.out.println("1");
          pst = con.prepareStatement(stm);
-         System.out.println("2");
          pst.execute();
-         System.out.println("3");
          rs = pst.getResultSet();
-
-         System.out.println("4");
          
          while(rs.next()){
         	 Product product = new Product();
@@ -50,7 +56,7 @@ public class ProductData implements Serializable {
       return records;
    }
 
-   public Connection getConnection(){
+   public static Connection getConnection(){
       Connection con = null;
 
       String url = "jdbc:derby:/Users/Bonobo/MyDB";
