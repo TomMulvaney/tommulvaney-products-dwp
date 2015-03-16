@@ -23,38 +23,31 @@ public class ProductData implements Serializable {
       ResultSet rs = null;
       PreparedStatement pst = null;
       Connection con = getConnection();
-      String stm = "Select * from product";
+      String stm = "Select * from products";
       
-//      List<Product> records = new ArrayList<Product>();
-//      try {   
-//         pst = con.prepareStatement(stm);
-//         pst.execute();
-//         rs = pst.getResultSet();
-//
-//         while(rs.next()){
-//        	 Product product = new Product();
-//        	 product.setId(rs.getInt(1));
-//        	 product.setName(rs.getString(2));
-//        	 product.setDescription(rs.getString(3));
-//        	 product.setQuantity(rs.getInt(4));
-//            records.add(product);				
-//         }
-//      } catch (SQLException e) {
-//         e.printStackTrace();
-//      }
-//      return records;
-	   
-	   List<Product> debugProducts = new ArrayList<Product>();
-	   
-	   Product debugProduct = new Product();
-	   debugProduct.setId(5);
-	   debugProduct.setName("Test name");
-	   debugProduct.setDescription("Test description");
-	   debugProduct.setQuantity(2);
-	   
-	   debugProducts.add(debugProduct);
-	   
-	   return debugProducts;
+      List<Product> records = new ArrayList<Product>();
+      try {   
+    	  System.out.println("1");
+         pst = con.prepareStatement(stm);
+         System.out.println("2");
+         pst.execute();
+         System.out.println("3");
+         rs = pst.getResultSet();
+
+         System.out.println("4");
+         
+         while(rs.next()){
+        	 Product product = new Product();
+        	 product.setId(rs.getInt(1));
+        	 product.setName(rs.getString(2));
+        	 product.setDescription(rs.getString(3));
+        	 product.setQuantity(rs.getInt(4));
+            records.add(product);				
+         }
+      } catch (SQLException e) {
+         e.printStackTrace();
+      }
+      return records;
    }
 
    public Connection getConnection(){

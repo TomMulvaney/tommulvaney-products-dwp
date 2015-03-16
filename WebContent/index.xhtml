@@ -5,30 +5,32 @@
    xmlns:f="http://java.sun.com/jsf/core"    
    xmlns:h="http://java.sun.com/jsf/html">
    <h:head>
-      <title>JSF Tutorial!</title>
+      <title>Products</title>
       <link href="./css/styles.css" rel="stylesheet" type="text/css"/>
    </h:head>
    <h:body>
-   <h2>JDBC Integration Example</h2>
-   <h:form>
-   <h:dataTable value="#{productData.products}" var="c"
-      			styleClass="generic-table"
-  				headerClass="generic-table-header"
-  				rowClasses="generic-table-odd-row,generic-table-even-row"
-  				columnClasses="generic-table-number-column,generic-table-column,generic-table-column,generic-table-number-column">>
-      <h:column><f:facet name="header">ID</f:facet>
-         #{c.id}
-      </h:column>
-      <h:column><f:facet name="header">Name</f:facet>
-         #{c.name}
-      </h:column>
-      <h:column><f:facet name="header">Description</f:facet>
-         #{c.description}
-      </h:column>
-      <h:column><f:facet name="header">Quantity</f:facet>
-         #{c.quantity}
-      </h:column>
-   </h:dataTable>
-   </h:form>
+	   <h1>Products</h1>
+	   
+	   <h:form>
+		   <h2>Product List</h2>
+		   <h:dataTable value="#{productData.products}" var="c"
+		      			styleClass="generic-table"
+		  				headerClass="generic-table-header"
+		  				rowClasses="generic-table-odd-row,generic-table-even-row"
+		  				columnClasses="generic-table-number-column,generic-table-column,generic-table-column,generic-table-number-column">>
+		      <h:column><f:facet name="header">ID</f:facet>
+		         #{c.id}
+		      </h:column>
+		      <h:column><f:facet name="header">Name</f:facet>
+		         #{c.name}
+		      </h:column>
+		      <h:column><f:facet name="header">Description</f:facet>
+		         #{c.description}
+		      </h:column>
+		      <h:column><f:facet name="header">Quantity</f:facet>
+		         #{c.quantity}
+		      </h:column>
+		   </h:dataTable>
+	   </h:form>
    </h:body>
 </html> 
