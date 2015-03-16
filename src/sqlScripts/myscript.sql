@@ -6,4 +6,4 @@ CREATE TABLE TESTUSER.Products (ID INTEGER NOT NULL,
 	Quantity INTEGER NOT NULL,
 	PRIMARY KEY (ID));
 	
-insert into TESTUSER.Products values (1, 'Caverna','Cave Farming board game',7);
+insert into TESTUSER.Products values (2, 'Android: Netrunner','Living Card Game',8);
