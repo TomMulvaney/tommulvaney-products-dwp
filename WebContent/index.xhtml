@@ -23,6 +23,15 @@
 			  			  errorClass="error"/>
 	  		</li>
 	  		<li>
+	  		<h3>Origin</h3>
+	  		<h:inputText value="#{product.origin}"
+	  					 required="true"
+	  					 requiredMessage="You must enter an origin"
+			  				id="productOrigin"/>
+			  	<h:message for="productOrigin" 
+			  			  errorClass="error"/>
+	  		</li>
+	  		<li>
 			  	<h3>Description</h3>
 			  	<h:inputText value="#{product.description}"/>
 	  		</li>
@@ -52,6 +61,11 @@
 	  			<h:column>
 	  				<f:facet name="header">Product Name</f:facet>
 	  				#{p.name}
+	  			</h:column>
+	  			
+	  			<h:column>
+	  				<f:facet name="header">Origin</f:facet>
+	  				#{p.origin}
 	  			</h:column>
 	  			
 	  			<h:column>

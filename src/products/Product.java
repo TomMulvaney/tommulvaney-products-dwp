@@ -8,12 +8,22 @@ public class Product
 {	
 	private String name;
 	private String description;
+	private String origin;
 	private int quantity = 1;
 	private int id;
 	
 	public Product() {
 		ProductIO productIO = new ProductIO();
 		this.id = productIO.getNewProductId();
+	}
+	
+	public String getOrigin()
+	{
+		return(origin);
+	}
+	
+	public void setOrigin(String origin) {
+		this.origin = origin;
 	}
 	
 	public String getName()
